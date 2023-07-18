@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Services {
+  id          String    @id @default(uuid())
+  name        String
+  price       Int
+  description String
+  waitings    Waiting[]
+}
+
+model Waiting {
+  id       String     @id @default(uuid())
+  name     String
+  services Services[]
+}
+
+model Caixa {
+  id          String   @id @default(uuid())
+  closed_date DateTime
+  total_value Int
+}
