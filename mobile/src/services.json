@@ -1,0 +1,42 @@
+[
+    {
+        "nome": "Luzes",
+        "valor": 10
+    },
+    {
+        "nome": "Cortes",
+        "valor": 15
+    },
+    {
+        "nome": "Barba",
+        "valor": 10
+    },
+    {
+        "nome": "Sobrancelha",
+        "valor": 5
+    },
+    {
+        "nome": "Freestyle",
+        "valor": 15
+    },
+    {
+        "nome": "Reflexo Alinhado",
+        "valor": 15
+    },
+    {
+        "nome": "Platinado Global (nevou)",
+        "valor": 15
+    },
+    {
+        "nome": "Pigmentação",
+        "valor": 5
+    },
+    {
+        "nome": "Corte Infantil",
+        "valor": 10
+    },
+    {
+        "nome": "Hair Color",
+        "valor": 20
+    }
+]
