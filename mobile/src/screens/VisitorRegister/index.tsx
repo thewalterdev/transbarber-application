@@ -4,6 +4,8 @@ import { StackTypes } from "../../routes/stack";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import styled from "styled-components/native";
 import ServiceSelector from "../../components/ServiceSelector";
+import getUser from "../../utils/getUser";
+import setUser from "../../utils/setUser";
 
 const Cadastro = () => {
   const navigation = useNavigation<StackTypes>();
@@ -25,7 +27,8 @@ const Cadastro = () => {
     setSelectedServices([...selectedServices, { nome: nome, valor: valor }]);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    `
     const data = {
       cliente: name,
       servicos: selectedServices.map((service) => {
@@ -37,28 +40,34 @@ const Cadastro = () => {
       total: valorTotal,
     };
 
+
     navigation.navigate("Home");
+    `;
+    const result = await getUser();
+    console.log(result);
   };
 
   return (
     <Background>
-      <InputView>
-        <Ionicons name="person-outline" color="white" size={26} />
-        <InputField
-          placeholder="Seu nome completo"
-          onChangeText={(value) => setName(value)}
-        />
-      </InputView>
-      <ServiceSelector handleAdd={handleAddService} />
-      <ValorTotal>Total: R${valorTotal}</ValorTotal>
-      <SubmitButton
-        style={{ justifyContent: "center", alignItems: "center" }}
-        activeOpacity={0.8}
-        onPress={handleSubmit}
-      >
-        <Ionicons name="log-in-outline" size={32} color="white" />
-        <EntrarLabel>Entre agora</EntrarLabel>
-      </SubmitButton>
+      <BackgroundWrapper>
+        <InputView>
+          <Ionicons name="person-outline" color="white" size={26} />
+          <InputField
+            placeholder="Seu nome completo"
+            onChangeText={(value) => setName(value)}
+          />
+        </InputView>
+        <ServiceSelector handleAdd={handleAddService} />
+        <ValorTotal>Total: R${valorTotal}</ValorTotal>
+        <SubmitButton
+          style={{ justifyContent: "center", alignItems: "center" }}
+          activeOpacity={0.8}
+          onPress={handleSubmit}
+        >
+          <Ionicons name="log-in-outline" size={32} color="white" />
+          <EntrarLabel>Entre agora</EntrarLabel>
+        </SubmitButton>
+      </BackgroundWrapper>
     </Background>
   );
 };
@@ -69,13 +78,12 @@ const ValorTotal = styled.Text`
   color: #01c601;
 `;
 
+const BackgroundWrapper = styled.ScrollView``;
+
 const Background = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   background: #1b1b1b;
-  flex-direction: column;
-  row-gap: 15px;
+  flex: 1;
+  padding: 50px 15px 5px 15px;
 `;
 
 const InputView = styled.View`
@@ -86,6 +94,7 @@ const InputView = styled.View`
   column-gap: 15px;
   width: 100%;
   padding: 0 20px;
+  margin-bottom: 20px;
 `;
 
 const InputField = styled.TextInput`

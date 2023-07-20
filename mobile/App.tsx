@@ -10,6 +10,7 @@ import {
 } from "@expo-google-fonts/inter";
 import { Loading } from "./src/components/Loading";
 import StackComponent from "./src/routes/stack";
+import Home from "./src/screens/Home";
 
 export default function App() {
   let [fontsLoaded] = useFonts({

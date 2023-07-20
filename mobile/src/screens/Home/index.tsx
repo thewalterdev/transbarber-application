@@ -6,16 +6,18 @@ import ServicesCarousel from "../../components/ServicesCarousel";
 
 const Home = () => (
   <Background>
-    <Welcome>
-      <WelcomeMessage>Seja bem-vindo,</WelcomeMessage>
-      <WelcomeMessage>Sherman</WelcomeMessage>
-      <WelcomeSubmessage>
-        Entre na lista clicando no botão abaixo.
-      </WelcomeSubmessage>
-    </Welcome>
-    <GetIntoListButton />
-    <ServicesCarousel />
-    <Text>Teste</Text>
+    <BackgroundWrapper>
+      <Welcome>
+        <WelcomeMessage>Seja bem-vindo,</WelcomeMessage>
+        <WelcomeMessage>Sherman</WelcomeMessage>
+        <WelcomeSubmessage>
+          Entre na lista clicando no botão abaixo.
+        </WelcomeSubmessage>
+      </Welcome>
+      <GetIntoListButton />
+      <ServicesCarousel />
+      <Text>Teste</Text>
+    </BackgroundWrapper>
   </Background>
 );
 
@@ -39,10 +41,12 @@ const WelcomeSubmessage = styled.Text`
   color: #5d5d5d;
 `;
 
-const Background = styled.ScrollView`
-  flex: 1;
-  padding: 50px 15px;
+const BackgroundWrapper = styled.ScrollView``;
+
+const Background = styled.View`
   background: #1b1b1b;
+  flex: 1;
+  padding: 50px 15px 5px 15px;
 `;
 
 export default Home;

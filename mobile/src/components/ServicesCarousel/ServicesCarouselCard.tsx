@@ -3,11 +3,13 @@ import styled from "styled-components/native";
 const ServicesCarouselCard = () => {
   return (
     <Container>
-      <Thumb
-        source={{
-          uri: "https://midia.cefad.com.br/wp-content/uploads/2017/06/Profissao-de-barbeiro-continua-em-alta.jpg",
-        }}
-      />
+      <ImageWrapper>
+        <Thumb
+          source={{
+            uri: "https://midia.cefad.com.br/wp-content/uploads/2017/06/Profissao-de-barbeiro-continua-em-alta.jpg",
+          }}
+        />
+      </ImageWrapper>
       <InfoContainer>
         <Title>Corte</Title>
         <Description>
@@ -29,12 +31,18 @@ const Container = styled.View`
   margin-top: 20px;
 `;
 
-const Thumb = styled.Image`
+const ImageWrapper = styled.View`
+  border: 2px solid #de4242;
+  border-radius: 8px;
   width: 240px;
   height: 320px;
-  object-fit: cover;
+`;
+
+const Thumb = styled.Image`
   border-radius: 8px;
-  border: 2px solid #de4242;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const InfoContainer = styled.View`
