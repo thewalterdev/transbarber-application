@@ -7,18 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+}
+
 model Services {
-  id          String    @id @default(uuid())
+  id          String @id @default(uuid())
   name        String
   price       Int
   description String
-  waitings    Waiting[]
 }
 
 model Waiting {
-  id       String     @id @default(uuid())
-  name     String
-  services Services[]
+  id   String @id @default(uuid())
+  name String
 }
 
 model Caixa {

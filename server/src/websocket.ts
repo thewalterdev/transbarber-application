@@ -1,5 +1,5 @@
 import { io } from "./http";
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  console.log(`Socket connected: ${socket.id}`);
 });

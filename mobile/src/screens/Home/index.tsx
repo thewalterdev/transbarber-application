@@ -1,25 +1,48 @@
 import styled from "styled-components/native";
-import { View } from "../../styles/style";
 import { Text } from "react-native";
 import GetIntoListButton from "./GetIntoListButton";
 import ServicesCarousel from "../../components/ServicesCarousel";
+import LogoutButton from "../../components/LogoutButton";
+import { useAuth } from "../../contexts/AuthContext";
+import { useEffect } from "react";
+import { io } from "socket.io-client";
 
-const Home = () => (
-  <Background>
-    <BackgroundWrapper>
-      <Welcome>
-        <WelcomeMessage>Seja bem-vindo,</WelcomeMessage>
-        <WelcomeMessage>Sherman</WelcomeMessage>
-        <WelcomeSubmessage>
-          Entre na lista clicando no botão abaixo.
-        </WelcomeSubmessage>
-      </Welcome>
-      <GetIntoListButton />
-      <ServicesCarousel />
-      <Text>Teste</Text>
-    </BackgroundWrapper>
-  </Background>
-);
+const Home = () => {
+  const socket = io("http://10.0.0.182:3333");
+  const { user } = useAuth();
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("conectou");
+    });
+
+    socket.disconnect();
+  }, []);
+
+  return (
+    <Background>
+      <BackgroundWrapper>
+        <LogoutButton />
+        <Welcome>
+          <WelcomeMessage>Seja bem-vindo,</WelcomeMessage>
+          <WelcomeMessage>{user.username}</WelcomeMessage>
+          <WelcomeSubmessage>
+            Entre na lista clicando no botão abaixo.
+          </WelcomeSubmessage>
+        </Welcome>
+        <GetIntoListButton />
+        <ServicesCarousel />
+        <Text>Teste</Text>
+      </BackgroundWrapper>
+    </Background>
+  );
+};
+
+const WelcomeTopMessages = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 const Welcome = styled.View`
   width: 100%;

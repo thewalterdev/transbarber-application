@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StackTypes } from "../../routes/stack";
+import { StackTypes } from "../../routes/auth.routes";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import styled from "styled-components/native";
 import ServiceSelector from "../../components/ServiceSelector";
-import getUser from "../../utils/getUser";
-import setUser from "../../utils/setUser";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Cadastro = () => {
   const navigation = useNavigation<StackTypes>();
   const [name, setName] = useState<string>("");
   const [selectedServices, setSelectedServices] = useState([]);
   const [valorTotal, setValorTotal] = useState(0);
+  const { user, login, signedIn, logout } = useAuth();
 
   useEffect(() => {
     handleCalcTotal();
@@ -27,24 +27,9 @@ const Cadastro = () => {
     setSelectedServices([...selectedServices, { nome: nome, valor: valor }]);
   }
 
-  const handleSubmit = async () => {
-    `
-    const data = {
-      cliente: name,
-      servicos: selectedServices.map((service) => {
-        return {
-          servico: service.nome,
-          valor: service.valor,
-        };
-      }),
-      total: valorTotal,
-    };
-
-
-    navigation.navigate("Home");
-    `;
-    const result = await getUser();
-    console.log(result);
+  const handleSubmit = () => {
+    login({ username: name });
+    //navigation.navigate("Home");
   };
 
   return (

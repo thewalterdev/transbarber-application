@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
-import { StackTypes } from "../../routes/stack";
+import { StackTypes } from "../../routes/auth.routes";
 
 const LoginAsBarberButton = () => {
   const navigation = useNavigation<StackTypes>();

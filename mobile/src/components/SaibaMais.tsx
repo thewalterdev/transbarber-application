@@ -2,7 +2,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import { StackTypes } from "../routes/stack";
+import { StackTypes } from "../routes/auth.routes";
 
 const SaibaMais = () => {
   const navigation = useNavigation<StackTypes>();

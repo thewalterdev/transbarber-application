@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import Services from "../services.json";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 
 interface Props {

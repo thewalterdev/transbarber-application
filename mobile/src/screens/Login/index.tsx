@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View } from "../../styles/style";
 import { ImageBackground, TouchableOpacity, Modal } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { StackTypes } from "../../routes/stack";
+import { StackTypes } from "../../routes/auth.routes";
 import styled from "styled-components/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import SaibaMais from "../../components/SaibaMais";
